@@ -1,9 +1,13 @@
 # node
-node_modules
+node_modules/
 npm-debug.log
+
+# ts
+.tscache/
 
 # custom
 _*
+dist/.env
 
 # generic rules
 .git/

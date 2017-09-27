@@ -1,6 +1,10 @@
 {
-  "name": "ci-github-bot",
+  "name": "@clickalicious/ci-github-bot",
   "description": "GitHub communication bot for CI/CD workflows.",
+  "homepage": "https://github.com/clickalicious/ci-github-bot",
+  "bugs": {
+    "url" : "https://github.com/clickalicious/ci-github-bot/issues"
+  },
   "version": "0.1.0",
   "license": "MIT",
   "repository": {
@@ -10,13 +14,11 @@
   "engines": {
     "node": "^6.1"
   },
+  "main": "./dist/cigithubbot.js",
   "scripts": {
-    "development": "NODE_ENV=development nodemon --debug ./bin/ci-github-bot",
-    "production": "NODE_ENV=production node ./bin/ci-github-bot",
     "build": "grunt",
-    "compile": "grunt compile",
-    "test": "echo \"No tests specified\" && exit 1",
-    "start": "node ./bin/ci-github-bot"
+    "demo": "npm ./demo/demo.js",
+    "test": "echo \"No tests specified\" && exit 1"
   },
   "keywords": [
     "github",
@@ -33,19 +35,25 @@
       "web": "https://clickalicious.de"
     }
   ],
+  "dependencies": {
+    "pug": "^2.0.0-rc.4",
+    "request": "^2.82"
+  },
   "devDependencies": {
     "@types/node": "^7.0",
+    "@types/pug": "^2.0",
+    "@types/dotenv": "^4.0",
+    "@types/request": "^2.0",
     "grunt": "^1.0",
     "grunt-cli": "^1.2",
     "grunt-contrib-copy": "^1.0",
     "grunt-contrib-watch": "^1.0",
+    "grunt-contrib-rename": "^0.2",
     "grunt-ts": "^6.0.0-beta.16",
     "grunt-tslint": "^5.0",
-    "nodemon": "^1.12",
     "tslint": "^5.7",
-    "typescript": "^2.5"
-  },
-  "dependencies": {
-    "tslint-config-airbnb": "^5.3.0"
+    "typescript": "^2.5",
+    "tslint-config-airbnb": "^5.3.0",
+    "dotenv": "^4.0"
   }
 }

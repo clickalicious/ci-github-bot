@@ -26,21 +26,20 @@
 ## Features
 
  - Simplified abstraction for GitHub's `Pull Request Reviews` API
- - Template support (`ddd`) for messages
- - Clean interface on GitHub's API for `Pull Request Review Comments`
+ - Template support for messages based on `PUG`
  - Written in `TypeScript` and compiled to `JavaScript` based on `Grunt`
+ - Easy to use
  - Clean + well documented code
 
 
 ## Example
 
-We provide a simple bridge for passing configuration from environment variables (ENV/.env) to `GitHubBot` 
+We ship a simple bridge for passing configuration from environment variables (ENV/.env) to `CiGitHubBot`. This bridge works on CircleCI - but it's easy to translate it to other CI services:
 
-### PHP
+### CircleCI
 
-An example on how to use the library in PHP context:
-```php
-<?php
+This is an example on how to bridge between CircleCI Environment and `CiGitHubBot`:
+```javascript
  
 // Create an instance of PHP's internal webserver
 $webserverDaemon = new \Clickalicious\Webserver\Daemon\Demonize(
