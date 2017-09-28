@@ -1,15 +1,21 @@
 'use strict';
 
 /**
+ /**
  * ci-gitHub-bot
- * GitHub communication bot for CI/CD workflow.
  *
- * Bridge between CI-server like "CircleCI" or "Travis CI" or similar and ci-github-bot.
- * Takes ENVIRONMENT variables and pass them as JSON configuration to ci-github-bot instance.
+ * GitHub communication bot for CI/CD workflows.
+ *
+ * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Supports templates for comments based on PUG template engine.
  *
  * MIT License
- * *
+ *
  * @copyright 2017 clickalicious, Benjamin Carl
+ */
+
+/**
+ * e2e test script for development.
  */
 
 import * as path from 'path';

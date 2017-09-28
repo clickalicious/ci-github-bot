@@ -3,7 +3,7 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflow.
+ * GitHub communication bot for CI/CD workflows.
  *
  * Simplified abstraction on GitHub's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
@@ -17,7 +17,7 @@ import ConfigurationGitHub from './../configuration/github';
 import ModelGitHubPullRequestComment from './../model/git-hub/pull-request/comment';
 
 /**
- * Helper for calling cURL via commandline.
+ * Helper for GitHub-API communication (URL-factory and stuff like that).
  */
 export default class HelperGitHubApi {
 

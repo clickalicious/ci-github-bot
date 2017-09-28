@@ -1,19 +1,33 @@
 {
   "compilerOptions": {
+    "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
-    "target": "es6",
-    "sourceMap": true,
+    "sourceMap": false,
     "types": [
       "node"
     ],
-    "removeComments": true,
+    "removeComments": false,
     "newLine": "LF",
     "declaration": true,
     "noImplicitAny": true,
     "noResolve": false,
     "noLib": false,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "listFiles": true,
+    "listEmittedFiles": true,
+    "allowUnusedLabels": true,
+    "alwaysStrict": true,
+    "charset": "utf8",
+    "diagnostics": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSourceMap": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true
   },
   "exclude": [
     "./node_modules",

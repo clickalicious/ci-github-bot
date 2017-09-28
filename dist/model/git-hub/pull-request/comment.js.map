@@ -1,1 +1,0 @@
-{"version":3,"file":"comment.js","sourceRoot":"","sources":["../../../../src/model/git-hub/pull-request/comment.ts"],"names":[],"mappings":"AAAA,YAAY,CAAC;;AAoBb;IAcS,OAAO;QACZ,MAAM,CAAC,IAAI,CAAC,IAAI,CAAC;IACnB,CAAC;IASM,OAAO,CAAC,KAAa;QAC1B,IAAI,CAAC,IAAI,GAAG,KAAK,CAAC;QAElB,MAAM,CAAC,IAAI,CAAC;IACd,CAAC;CACF;AA9BD,gDA8BC"}

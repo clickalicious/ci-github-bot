@@ -1,5 +1,6 @@
 "use strict";
 
+/*
 const path = require("path");
 const dotenv = require("dotenv");
 const cigithubbot_1 = require("./../dist/cigithubbot");
@@ -14,6 +15,9 @@ dotenv.config({
 console.log(
   process.env.GB_GITHUB_BOT_USERNAME
 );
+*/
+
+console.log(1);
 
 /*
 

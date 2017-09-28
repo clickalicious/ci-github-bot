@@ -3,7 +3,7 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflow.
+ * GitHub communication bot for CI/CD workflows.
  *
  * Simplified abstraction on GitHub's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
@@ -16,7 +16,7 @@
 import ParserUrlGitHub from './../parser/url/git-hub';
 
 /**
- * Configuration blueprint for bot.
+ * Configuration of CiGitHubBot.
  */
 export default class ConfigurationGitHub {
 

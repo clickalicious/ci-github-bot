@@ -3,7 +3,7 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflow.
+ * GitHub communication bot for CI/CD workflows.
  *
  * Simplified abstraction on GitHub's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
@@ -14,7 +14,7 @@
  */
 
 /**
- * Configuration blueprint for comments.
+ * Configuration of comment.
  */
 export default class ConfigurationComment {
 

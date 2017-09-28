@@ -11,7 +11,7 @@ module.exports = function (grunt) {
      app: {
        files: {
          src: [
-           'src/**/*.ts',
+           './src/**/*.ts',
          ]
        }
      }
@@ -20,10 +20,10 @@ module.exports = function (grunt) {
      app: {
        tsconfig: 'tsconfig.json',
        options: {
-         rootDir: './src',
+         rootDir: './src'
        },
        files: [{
-         src: ['src/\*\*/\*.ts', '!src/**/*.d.ts'],
+         src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
          outDir: './dist'
        }]
      }
@@ -46,7 +46,7 @@ module.exports = function (grunt) {
     },
     watch: {
      ts: {
-       files: ['src/\*\*/\*.ts'],
+       files: ['./src/\*\*/\*.ts'],
        tasks: ['ts']
      }
     }

@@ -37,13 +37,15 @@
   ],
   "dependencies": {
     "pug": "^2.0.0-rc.4",
-    "request": "^2.82"
+    "request": "^2.82",
+    "systemjs": "^0.20"
   },
   "devDependencies": {
     "@types/node": "^7.0",
     "@types/pug": "^2.0",
     "@types/dotenv": "^4.0",
     "@types/request": "^2.0",
+    "@types/systemjs": "^0.20",
     "grunt": "^1.0",
     "grunt-cli": "^1.2",
     "grunt-contrib-copy": "^1.0",
