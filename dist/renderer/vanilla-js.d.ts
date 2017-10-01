@@ -20,7 +20,15 @@ export declare class RendererVanillaJs {
      *
      * @param {ConfigurationComment} configuration Configuration of comment to be rendered
      *
-     * @return {string} Rendered buffer
+     * @returns {string} Rendered buffer
      */
     render(configuration: ConfigurationComment): string;
+    /**
+     * Resolves placeholder from passed in buffer.
+     *
+     * @param {string} buffer
+     *
+     * @returns {RegExpMatchArray} Resolved placeholders
+     */
+    private resolvePlaceholder(buffer);
 }

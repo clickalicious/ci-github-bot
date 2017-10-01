@@ -25,22 +25,52 @@ export class RendererVanillaJs {
    *
    * @param {ConfigurationComment} configuration Configuration of comment to be rendered
    *
-   * @return {string} Rendered buffer
+   * @returns {string} Rendered buffer
    */
   public render(configuration: ConfigurationComment): string {
 
     let buffer: string = '';
 
+    const variables: object = Object.assign(configuration.getVariables(), process.env);
+
     for (const template in configuration.getTemplates()) {
-      buffer += configuration.getTemplates()[template];
-      for (const variable in configuration.getVariables()) {
-        buffer = buffer.replace(
-          '${' + variable + '}',
-          configuration.getVariables()[variable],
+      let currentBuffer: string = configuration.getTemplates()[template];
+      const placeholders: RegExpMatchArray = this.resolvePlaceholder(currentBuffer);
+
+      for (const placeholder in placeholders) {
+        const plainPlaceholder = placeholders[placeholder]
+          .replace('${', '')
+          .replace('}', '');
+        const replacement = variables[plainPlaceholder];
+
+        if (typeof replacement === 'undefined') {
+          throw new Error(
+            'Variable "' + plainPlaceholder + '" is undefined. Template could not be rendered!',
+          );
+        }
+
+        currentBuffer = currentBuffer.replace(
+          placeholders[placeholder],
+          replacement,
         );
       }
+
+      buffer += currentBuffer;
     }
 
     return buffer;
+  }
+
+  /**
+   * Resolves placeholder from passed in buffer.
+   *
+   * @param {string} buffer
+   *
+   * @returns {RegExpMatchArray} Resolved placeholders
+   */
+  private resolvePlaceholder(buffer: string):RegExpMatchArray {
+    return buffer.match(
+      new RegExp(/\${([\w\d]+)}/g),
+    );
   }
 }

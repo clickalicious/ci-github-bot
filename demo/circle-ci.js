@@ -37,12 +37,10 @@ const ciGithubBot = new CircleCiGithubBot(
 // Publish comment
 ciGithubBot.createPullRequestComment(
   new ConfigurationComment(
-    process.env.CI_TEMPLATES,
+    process.env.CI_TEMPLATES.split('|'),
     {
       stageUrl: process.env.CI_STAGE_LINK_URL,
-      stageText: process.env.CI_STAGE_LINK_TEXT,
-      buildNumber: process.env.CI_CI_BUILD_NUMBER,
-      buildUrl: process.env.CI_CI_BUILD_URL,
+      stageText: process.env.CI_STAGE_LINK_TEXT
     }
   )
 );

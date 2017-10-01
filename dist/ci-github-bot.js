@@ -1,7 +1,7 @@
 'use strict';
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * Ci-Github-Bot
+ * ci-github-bot
  *
  * Github communication bot for CI/CD workflows.
  *
@@ -129,7 +129,7 @@ CiGithubBot.COMMENT_MARKER_END = '<!-- CiGithubBot:END -->';
  *
  * @type {string}
  */
-CiGithubBot.TEMPLATE_POWERED_BY = '<div>Powered by Ci-Github-Bot ' +
+CiGithubBot.TEMPLATE_POWERED_BY = '<div>Powered by ci-github-bot ' +
     '<a href="https://github.com/clickalicious/ci-github-bot/" target="_blank"><img' +
     ' src="https://image.flaticon.com/icons/png/32/34/34429.png"' +
     ' /></a></div>';
@@ -138,5 +138,5 @@ CiGithubBot.TEMPLATE_POWERED_BY = '<div>Powered by Ci-Github-Bot ' +
  *
  * @type {string}
  */
-CiGithubBot.HTTP_USER_AGENT = 'Ci-Github-Bot';
+CiGithubBot.HTTP_USER_AGENT = 'ci-github-bot';
 exports.CiGithubBot = CiGithubBot;

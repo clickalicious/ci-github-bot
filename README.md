@@ -45,7 +45,7 @@ We ship `ci-github-bot` with a simple bridge for passing configuration from `Cir
 
 ### CircleCI
 
-This is an example on how to use the bridge between `CircleCI` environment and `Ci-GitHub-Bot`:
+This is an example on how to use the bridge between `CircleCI` environment and `ci-github-bot`:
 ```javascript
 
 // Imports

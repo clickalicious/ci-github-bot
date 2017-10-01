@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Ci-Github-Bot
+ * ci-github-bot
  *
  * Github communication bot for CI/CD workflows.
  *
@@ -42,7 +42,7 @@ export class CiGithubBot {
    *
    * @type {string}
    */
-  static readonly TEMPLATE_POWERED_BY: string = '<div>Powered by Ci-Github-Bot ' +
+  static readonly TEMPLATE_POWERED_BY: string = '<div>Powered by ci-github-bot ' +
     '<a href="https://github.com/clickalicious/ci-github-bot/" target="_blank"><img' +
     ' src="https://image.flaticon.com/icons/png/32/34/34429.png"' +
     ' /></a></div>';
@@ -52,7 +52,7 @@ export class CiGithubBot {
    *
    * @type {string}
    */
-  static readonly HTTP_USER_AGENT: string = 'Ci-Github-Bot';
+  static readonly HTTP_USER_AGENT: string = 'ci-github-bot';
 
   /**
    * Configuration of Bot.
