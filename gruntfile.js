@@ -67,7 +67,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-ts');
 
   grunt.registerTask('default', [
-    'tslint:dist', 'ts:dist', 'copy'
+    'tslint:dist', 'ts:dist'
   ]);
 
   grunt.registerTask('lint', [
@@ -75,10 +75,10 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'tslint:dist', 'ts:dist', 'copy'
+    'tslint:dist', 'ts:dist', 'copy:dist'
   ]);
 
   grunt.registerTask('build-dev', [
-    'tslint:dev', 'ts:dev', 'copy'
+    'tslint:dev', 'ts:dev', 'copy:dev'
   ]);
 };
