@@ -3,9 +3,9 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflows.
+ * Github communication bot for CI/CD workflows.
  *
- * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Simplified abstraction on Github's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
  *
  * MIT License
@@ -16,7 +16,7 @@
 /**
  * Configuration of comment.
  */
-export default class ConfigurationComment {
+export class ConfigurationComment {
 
   /**
    * Templates combined rendered for commenting.
@@ -45,7 +45,7 @@ export default class ConfigurationComment {
   /**
    * Getter for variables.
    *
-   * @returns {object}
+   * @returns {object<string>}
    */
   public getVariables(): object {
     return this.variables;

@@ -3,9 +3,9 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflows.
+ * Github communication bot for CI/CD workflows.
  *
- * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Simplified abstraction on Github's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
  *
  * MIT License
@@ -14,9 +14,9 @@
  */
 
 /**
- * Parser for parsing out required information from a GitHub-URL.
+ * Parser for parsing out required information from a Github-URL.
  */
-export default class ParserUrlGitHub
+export class ParserUrlGithub
 {
   /**
    * URL containing information about organisation, repository, pr-number ...
@@ -98,7 +98,7 @@ export default class ParserUrlGitHub
    *
    * @param {string} value
    *
-   * @returns {ParserUrlGitHub}
+   * @returns {ParserUrlGithub}
    */
   private setUrl(value: string): this {
     this.url = value;
@@ -120,7 +120,7 @@ export default class ParserUrlGitHub
    *
    * @param {string} value
    *
-   * @returns {ParserUrlGitHub}
+   * @returns {ParserUrlGithub}
    */
   private setOrganisation(value: string): this {
     this.organisation = value;
@@ -142,7 +142,7 @@ export default class ParserUrlGitHub
    *
    * @param {string} value
    *
-   * @returns {ParserUrlGitHub}
+   * @returns {ParserUrlGithub}
    */
   private setRepository(value: string): this {
     this.repository = value;
@@ -164,7 +164,7 @@ export default class ParserUrlGitHub
    *
    * @param {number} value
    *
-   * @returns {ParserUrlGitHub}
+   * @returns {ParserUrlGithub}
    */
   private setPullRequestNumber(value: number): this {
     this.pullRequestNumber = value;
@@ -186,7 +186,7 @@ export default class ParserUrlGitHub
    *
    * @param {string} value
    *
-   * @returns {ParserUrlGitHub}
+   * @returns {ParserUrlGithub}
    */
   private setScheme(value: string): this {
     this.scheme = value;

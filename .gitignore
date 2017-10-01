@@ -7,8 +7,8 @@ npm-debug.log
 
 # custom
 _*
-dist/.env
 
 # generic rules
 .git/
+.alm/
 .env

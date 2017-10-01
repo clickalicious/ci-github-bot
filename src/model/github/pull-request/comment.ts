@@ -3,9 +3,9 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflows.
+ * Github communication bot for CI/CD workflows.
  *
- * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Simplified abstraction on Github's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
  *
  * MIT License
@@ -14,11 +14,11 @@
  */
 
 /**
- * Model for GitHub Pull-Request Comment.
+ * Model for Github Pull-Request Comment.
  *
  * @api https://developer.github.com/v3/pulls/#get-a-single-pull-request
  */
-export default class ModelGitHubPullRequestComment {
+export class ModelGithubPullRequestComment {
 
   /**
    * Attribute body
@@ -41,7 +41,7 @@ export default class ModelGitHubPullRequestComment {
    *
    * @param {string} value
    *
-   * @returns {ModelGitHubPullRequestComment}
+   * @returns {ModelGithubPullRequestComment}
    */
   public setBody(value: string): this {
     this.body = value;

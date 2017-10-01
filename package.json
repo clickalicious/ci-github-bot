@@ -14,10 +14,12 @@
   "engines": {
     "node": "^6.1"
   },
-  "main": "./dist/cigithubbot.js",
+  "main": "./dist/ci-github-bot.js",
   "scripts": {
-    "build": "grunt",
-    "demo": "npm ./demo/demo.js",
+    "watch": "grunt watch",
+    "lint": "grunt lint",
+    "build": "grunt build",
+    "build-dev": "grunt build-dev",
     "test": "echo \"No tests specified\" && exit 1"
   },
   "keywords": [
@@ -36,21 +38,17 @@
     }
   ],
   "dependencies": {
-    "pug": "^2.0.0-rc.4",
-    "request": "^2.82",
-    "systemjs": "^0.20"
+    "request": "^2.82"
   },
   "devDependencies": {
     "@types/node": "^7.0",
     "@types/pug": "^2.0",
     "@types/dotenv": "^4.0",
     "@types/request": "^2.0",
-    "@types/systemjs": "^0.20",
     "grunt": "^1.0",
     "grunt-cli": "^1.2",
     "grunt-contrib-copy": "^1.0",
     "grunt-contrib-watch": "^1.0",
-    "grunt-contrib-rename": "^0.2",
     "grunt-ts": "^6.0.0-beta.16",
     "grunt-tslint": "^5.0",
     "tslint": "^5.7",

@@ -3,9 +3,9 @@
 /**
  * ci-gitHub-bot
  *
- * GitHub communication bot for CI/CD workflows.
+ * Github communication bot for CI/CD workflows.
  *
- * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Simplified abstraction on Github's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
  *
  * MIT License
@@ -13,12 +13,12 @@
  * @copyright 2017 clickalicious, Benjamin Carl
  */
 
-import ParserUrlGitHub from './../parser/url/git-hub';
+import { ParserUrlGithub } from '../parser/url/github';
 
 /**
- * Configuration of CiGitHubBot.
+ * Configuration of CiGithubBot.
  */
-export default class ConfigurationGitHub {
+export class ConfigurationGithub {
 
   /**
    * Username the Bot uses for authentication.
@@ -102,14 +102,14 @@ export default class ConfigurationGitHub {
   }
 
   /**
-   * Loads configuration data from a Pull-Request URL (GitHub).
+   * Loads configuration data from a Pull-Request URL (Github).
    *
    * @param {string} pullRequestUrl
    */
   public loadFromPullRequestUrl(pullRequestUrl: string) {
 
     // Extract information from Pull Request URL
-    const urlParser = new ParserUrlGitHub(pullRequestUrl);
+    const urlParser = new ParserUrlGithub(pullRequestUrl);
 
     this.load(
       urlParser.getOrganisation(),
@@ -133,7 +133,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   private setUsername(value: string): this {
     this.username = value;
@@ -155,7 +155,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   private setToken(value: string): this {
     this.token = value;
@@ -177,7 +177,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   private setOrganisation(value: string): this {
     this.organisation = value;
@@ -199,7 +199,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   private setRepository(value: string): this {
     this.repository = value;
@@ -221,7 +221,7 @@ export default class ConfigurationGitHub {
    *
    * @param {number} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   private setPullRequestNumber(value: number): this {
     this.pullRequestNumber = value;
@@ -243,7 +243,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   public setScheme(value: string): this {
     this.scheme = value;
@@ -265,7 +265,7 @@ export default class ConfigurationGitHub {
    *
    * @param {string} value
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
   public setHost(value: string): this {
     this.host = value;

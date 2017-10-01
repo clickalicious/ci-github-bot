@@ -6,9 +6,9 @@
 
 **GitHub** communication bot for `CI/CD` workflows.
 
-| [![npm](https://img.shields.io/npm/v/@clickalicious/ci-github-bot.svg)](https://www.npmjs.com/@clickalicious/ci-github-bot) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/c73c519d18dd4d6ca703271b4d5faccf/master.svg)](https://www.codacy.com/app/clickalicious/GitHubBot?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/GitHubBot&utm_campaign=Badge_Grade) 	| [![Build Status](https://travis-ci.org/clickalicious/GitHubBot.svg?branch=master)](https://travis-ci.org/clickalicious/GitHubBot) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://clickalicious.de/) 	|
+| [![npm](https://img.shields.io/npm/v/@clickalicious/ci-github-bot.svg)](https://www.npmjs.com/@clickalicious/ci-github-bot) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/c73c519d18dd4d6ca703271b4d5faccf/master.svg)](https://www.codacy.com/app/clickalicious/ci-github-bot?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/ci-github-bot&utm_campaign=Badge_Grade) 	| [![Build Status](https://travis-ci.org/clickalicious/ci-github-bot.svg?branch=master)](https://travis-ci.org/clickalicious/ci-github-bot) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://clickalicious.de/) 	|
 |---	|---	|---	|---	|
-| [![GitHub release](https://img.shields.io/github/release/clickalicious/GitHubBot.svg?style=flat)](https://github.com/clickalicious/GitHubBot/releases) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/GitHubBot.svg)](https://github.com/clickalicious/GitHubBot/issues) 	| [![Dependency Status](https://dependencyci.com/github/clickalicious/GitHubBot/badge)](https://dependencyci.com/github/clickalicious/ci-github-bot)  	|
+| [![GitHub release](https://img.shields.io/github/release/clickalicious/ci-github-bot.svg?style=flat)](https://github.com/clickalicious/ci-github-bot/releases) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/ci-github-bot.svg)](https://github.com/clickalicious/ci-github-bot/issues) 	| [![Dependency Status](https://dependencyci.com/github/clickalicious/ci-github-bot/badge)](https://dependencyci.com/github/clickalicious/ci-github-bot)  	|
 
 
 ## Table of Contents
@@ -25,22 +25,22 @@
 
 ## Features
 
- - Comment on `GitHub` Pull Request by a simple method call
- - Write comments with `PUG` templating engine support
+ - Publish comments to a `GitHub` Pull Request by a simple method call
+ - Comments rendered with `PUG` templating engine
  - Written in `TypeScript` and transpiled to `JavaScript` with help of `Grunt`
- - Clean + well documented code
+ - High-Quality npm package - clean & well documented code
 
 
 ## Philosophy
 
-If you've ever used [`Heroku® Review Apps`](https://devcenter.heroku.com/articles/github-integration-review-apps "Heroku Review Apps") and want to implement something similar for your build process then you will probably reach some point where things getting complex (like I did :). You will need to take a bunch of information and before to be able to comment on a Pull Request. This is the step which `Ci-GitHub-Bot` claims to simplify. With its abstraction on `GitHub`'s comment API its easy to publish the comment to the Pull Request on GitHub. 
+If you've ever used [`Heroku® Review Apps`](https://devcenter.heroku.com/articles/github-integration-review-apps "Heroku Review Apps") and want to implement something similar for your build process then you will probably reach some point where things getting complex (like I did :). You will need to take a bunch of information and before to be able to comment on a Pull Request. This is the step which `ci-github-bot` claims to simplify. With its abstraction on `GitHub`'s comment API its easy to publish the comment to the Pull Request on GitHub. 
 
-Beside the wrapper `Ci-GitHub-Bot` provides a bridge for the *CircleCI* build-system. You just need to put in an username, a token and the Pull-Request URL (you can configure it manually as well) - to be able to communicate with Github - after this you can publish comments of Pull Requests on GitHub. Sounds simple? It is that simple! Let's have a look at the examples ...
+Beside it's wrapping functionality `ci-github-bot` provides a bridge for the `CircleCI` build-system. You just need to put in an username, a token. The Pull-Request URL is taken from environment variables at `CircleCI`. After this step you are able to communicate with Github. From now on you can publish comments to Pull Requests at GitHub. Sounds simple? It is that simple. Let's have a look at the examples ...
 
 
 ## Example
 
-We ship `Ci-GitHub-Bot` with a simple bridge for passing configuration from `CircleCI` environment variables (ENV/.env) automagically to `Ci-GitHub-Bot` - so the only thing left is passing username and token when creating a bot instance - the `GitHub` Pull Request URL is then taken from environment while building:
+We ship `ci-github-bot` with a simple bridge for passing configuration from `CircleCI` environment variables (ENV/.env) automagically to `ci-github-bot` - so the only thing left is passing username and token when creating a bot instance - the `GitHub` Pull Request URL is then taken from environment while building:
 
 
 ### CircleCI
@@ -119,7 +119,7 @@ bot.createPullRequestComment(
 
 ## Requirements
 
- - `nodejs >= 6.1`
+ - `Node.js >= 6.1`
 
 
 ## Versioning
@@ -145,7 +145,7 @@ If you encounter a (potential) security issue don't hesitate to get in contact w
 ## Participate & Share
 
 ... yeah. If you're a code monkey too - maybe we can build a force ;) If you would like to participate in either **Code**, **Comments**, **Documentation**, **Wiki**, **Bug-Reports**, **Unit-Tests**, **Bug-Fixes**, **Feedback** and/or **Critic** then please let me know as well!
-<a href="https://twitter.com/intent/tweet?hashtags=&original_referer=http%3A%2F%2Fgithub.com%2F&text=Ci-GitHub-Bot%20-%20GitHub%20communication%20%23bot%20for%20%23CI/CD%20workflows%20%40phpfluesterer%20%23Ci-GitHub-Bot%20%23js%20%23circleci%20https%3A%2F%2Fgithub.com%2Fclickalicious%2Fci-github-bot&tw_p=tweetbutton" target="_blank">
+<a href="https://twitter.com/intent/tweet?hashtags=&original_referer=http%3A%2F%2Fgithub.com%2F&text=ci-github-bot%20-%20GitHub%20communication%20%23bot%20for%20%23CI/CD%20workflows%20%40phpfluesterer%20%23ci-github-bot%20%23js%20%23circleci%20https%3A%2F%2Fgithub.com%2Fclickalicious%2Fci-github-bot&tw_p=tweetbutton" target="_blank">
   <img src="http://jpillora.com/github-twitter-button/img/tweet.png"></img>
 </a>
 

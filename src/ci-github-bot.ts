@@ -1,11 +1,11 @@
 'use strict';
 
 /**
- * ci-gitHub-bot
+ * Ci-Github-Bot
  *
- * GitHub communication bot for CI/CD workflows.
+ * Github communication bot for CI/CD workflows.
  *
- * Simplified abstraction on GitHub's PR/Review-Comment API.
+ * Simplified abstraction on Github's PR/Review-Comment API.
  * Supports templates for comments based on PUG template engine.
  *
  * MIT License
@@ -13,16 +13,16 @@
  * @copyright 2017 clickalicious, Benjamin Carl
  */
 
-import * as pug from 'pug';
 import * as request from 'request';
-import ConfigurationComment from './configuration/comment';
-import ConfigurationGitHub from './configuration/github';
-import HelperGitHubApi from './helper/git-hub-api';
+import { ConfigurationComment } from './configuration/comment';
+import { ConfigurationGithub } from './configuration/github';
+import { HelperGithubApi } from './helper/github-api';
+import { RendererVanillaJs } from './renderer/vanilla-js';
 
 /**
- * Generic CI-Bot for GitHub communication wrapping configuration and template processing.
+ * Generic CI-Bot for Github communication wrapping configuration and template processing.
  */
-export default class CiGithubBot {
+export class CiGithubBot {
   /**
    * Marker for comment (begin)
    *
@@ -42,7 +42,7 @@ export default class CiGithubBot {
    *
    * @type {string}
    */
-  static readonly TEMPLATE_POWERED_BY: string = '<div>Powered by Ci-GitHub-Bot ' +
+  static readonly TEMPLATE_POWERED_BY: string = '<div>Powered by Ci-Github-Bot ' +
     '<a href="https://github.com/clickalicious/ci-github-bot/" target="_blank"><img' +
     ' src="https://image.flaticon.com/icons/png/32/34/34429.png"' +
     ' /></a></div>';
@@ -52,40 +52,40 @@ export default class CiGithubBot {
    *
    * @type {string}
    */
-  static readonly HTTP_USER_AGENT: string = 'Ci-GitHub-Bot';
+  static readonly HTTP_USER_AGENT: string = 'Ci-Github-Bot';
 
   /**
    * Configuration of Bot.
    *
    * @var {configurationBot}
    */
-  private configuration: ConfigurationGitHub;
+  private configuration: ConfigurationGithub;
 
   /**
-   * HelperGitHubApi helper.
+   * HelperGithubApi helper.
    *
-   * @var {HelperGitHubApi}
+   * @var {HelperGithubApi}
    */
-  private helperGitHubApi: HelperGitHubApi;
+  private helperGithubApi: HelperGithubApi;
 
   /**
    * Constructor.
    *
-   * @param {ConfigurationGitHub} configuration Instance of bot configuration (credentials ...)
+   * @param {ConfigurationGithub} configuration Instance of bot configuration (credentials ...)
    */
-  constructor(configuration: ConfigurationGitHub) {
+  constructor(configuration: ConfigurationGithub) {
 
     this
       .setConfiguration(configuration)
-      .setHelperGitHubApi(
-        new HelperGitHubApi(
+      .setHelperGithubApi(
+        new HelperGithubApi(
           this.configuration,
         ),
       );
   }
 
   /**
-   * Creates a review comment on existing PR at GitHub.
+   * Creates a review comment on existing PR at Github.
    *
    * @param {ConfigurationComment} configuration Instance of comment configuration (template,
    *   variables ...)
@@ -97,17 +97,13 @@ export default class CiGithubBot {
         ' the pull request before creating a comment.');
     }
 
-    // Body of comment - "body" is the name in GitHub's API (v3)
-    let body = '';
+    const renderer = new RendererVanillaJs();
 
-    // Render (all) template(s) passed into processing stack
-    for (const template in configuration.getTemplates()) {
-      body += pug.render(configuration.getTemplates()[template], configuration.getVariables());
-    }
-    body = CiGithubBot.COMMENT_MARKER_BEGIN + body +
-      pug.render(CiGithubBot.TEMPLATE_POWERED_BY) + CiGithubBot.COMMENT_MARKER_END;
+    // Body of comment - "body" is the name in Github's API (v3)
+    const body = CiGithubBot.COMMENT_MARKER_BEGIN + renderer.render(configuration) +
+      CiGithubBot.TEMPLATE_POWERED_BY + CiGithubBot.COMMENT_MARKER_END;
 
-    const url = this.getHelperGitHubApi().getApiUrl(
+    const url = this.getHelperGithubApi().getApiUrl(
       'issues/' + this.getConfiguration().getPullRequestNumber() + '/comments',
     );
 
@@ -120,6 +116,8 @@ export default class CiGithubBot {
    * @param {string} url
    * @param {object} jsonData
    * @param {string} httpMethod
+   *
+   * @returns boolean TRUE on success, otherwise FALSE
    */
   private sendRequest(url: string, jsonData: object, httpMethod: string = 'GET') {
 
@@ -135,7 +133,9 @@ export default class CiGithubBot {
     request
       (url, options)
       .on('response', (response) => {
-        console.log(response.statusCode); // 200
+        if (201 !== response.statusCode) {
+          throw Error(`Error: ${response.statusCode} Message: ${response.statusMessage}`);
+        }
       })
       .auth(
         this.getConfiguration().getUsername(),
@@ -144,23 +144,23 @@ export default class CiGithubBot {
   }
 
   /**
-   * Getter for helperGitHubApi.
+   * Getter for helperGithubApi.
    *
-   * @returns {HelperGitHubApi}
+   * @returns {HelperGithubApi}
    */
-  public getHelperGitHubApi(): HelperGitHubApi {
-    return this.helperGitHubApi;
+  public getHelperGithubApi(): HelperGithubApi {
+    return this.helperGithubApi;
   }
 
   /**
-   * Setter for helperGitHubApi.
+   * Setter for helperGithubApi.
    *
-   * @param {HelperGitHubApi} value
+   * @param {HelperGithubApi} value
    *
    * @returns {CiGithubBot}
    */
-  private setHelperGitHubApi(value: HelperGitHubApi): this {
-    this.helperGitHubApi = value;
+  private setHelperGithubApi(value: HelperGithubApi): this {
+    this.helperGithubApi = value;
 
     return this;
   }
@@ -168,20 +168,20 @@ export default class CiGithubBot {
   /**
    * Getter for configuration.
    *
-   * @returns {ConfigurationGitHub}
+   * @returns {ConfigurationGithub}
    */
-  public getConfiguration(): ConfigurationGitHub {
+  public getConfiguration(): ConfigurationGithub {
     return this.configuration;
   }
 
   /**
    * Setter for configuration.
    *
-   * @param {ConfigurationGitHub} value
+   * @param {ConfigurationGithub} value
    *
    * @returns {CiGithubBot}
    */
-  private setConfiguration(value: ConfigurationGitHub): this {
+  private setConfiguration(value: ConfigurationGithub): this {
     this.configuration = value;
 
     return this;

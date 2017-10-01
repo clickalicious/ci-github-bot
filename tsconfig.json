@@ -1,16 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2015",
+    "target": "es6",
     "module": "commonjs",
     "moduleResolution": "node",
-    "sourceMap": false,
+    "sourceMap": true,
     "types": [
       "node"
     ],
     "removeComments": false,
     "newLine": "LF",
     "declaration": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noResolve": false,
     "noLib": false,
     "experimentalDecorators": true,
@@ -21,11 +21,11 @@
     "charset": "utf8",
     "diagnostics": true,
     "forceConsistentCasingInFileNames": true,
-    "inlineSourceMap": true,
+    "inlineSourceMap": false,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": true,
     "pretty": true
   },
