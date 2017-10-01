@@ -46,7 +46,7 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-     dist: {
+     env: {
        expand: true,
        cwd: './tests/fixtures',
        src: ['.env.ci', '.env.circle-ci'],
@@ -75,10 +75,10 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'tslint:dist', 'ts:dist', 'copy:dist'
+    'tslint:dist', 'ts:dist'
   ]);
 
   grunt.registerTask('build-dev', [
-    'tslint:dev', 'ts:dev', 'copy:dev'
+    'tslint:dev', 'ts:dev'
   ]);
 };
