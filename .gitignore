@@ -1,0 +1,17 @@
+# node
+node_modules/
+npm-debug.log
+
+# ts
+.tscache/
+
+# custom
+_*
+dist/test.js
+dist/test.d.ts
+dist/test.js.map
+
+# generic rules
+.git/
+.alm/
+.env
