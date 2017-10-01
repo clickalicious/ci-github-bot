@@ -17,9 +17,8 @@
 // Imports
 const path = require('path');
 const dotenv = require('dotenv');
-const { CiGithubBot } = require('./../dist/ci-github-bot');
+const { CircleCiGithubBot } = require('./../dist/circleci-github-bot');
 const { ConfigurationComment } = require('./../dist/configuration/comment');
-const { ConfigurationGithub } = require('./../dist/configuration/github');
 
 // Current directory
 const applicationDirectory = path.dirname(require.main.filename);
@@ -29,17 +28,11 @@ dotenv.config({
   path: applicationDirectory + '/.env.circle-ci',
 });
 
-// Create a Github configuration
-const configurationGithub = new ConfigurationGithub(
+// Create a bot instance
+const ciGithubBot = new CircleCiGithubBot(
   process.env.CI_GITHUB_BOT_USERNAME,
   process.env.CI_GITHUB_BOT_TOKEN
 );
-
-// Load configuration from PR URL
-configurationGithub.loadFromPullRequestUrl(process.env.CI_GITHUB_PR_URL);
-
-// Create a bot instance
-const ciGithubBot = new CiGithubBot(configurationGithub);
 
 // Publish comment
 ciGithubBot.createPullRequestComment(
