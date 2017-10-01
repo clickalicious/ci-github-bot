@@ -31,12 +31,12 @@ dotenv.config({
 
 // Create a Github configuration
 const configurationGithub = new ConfigurationGithub(
-  process.env.CGB_GITHUB_BOT_USERNAME,
-  process.env.CGB_GITHUB_BOT_TOKEN
+  process.env.CI_GITHUB_BOT_USERNAME,
+  process.env.CI_GITHUB_BOT_TOKEN
 );
 
 // Load configuration from PR URL
-configurationGithub.loadFromPullRequestUrl(process.env.CGB_GITHUB_PR_URL);
+configurationGithub.loadFromPullRequestUrl(process.env.CI_GITHUB_PR_URL);
 
 // Create a bot instance
 const ciGithubBot = new CiGithubBot(configurationGithub);
@@ -44,12 +44,12 @@ const ciGithubBot = new CiGithubBot(configurationGithub);
 // Publish comment
 ciGithubBot.createPullRequestComment(
   new ConfigurationComment(
-    process.env.CGB_TEMPLATES,
+    process.env.CI_TEMPLATES,
     {
-      stageUrl: process.env.CGB_STAGE_LINK_URL,
-      stageText: process.env.CGB_STAGE_LINK_TEXT,
-      buildNumber: process.env.CGB_CI_BUILD_NUMBER,
-      buildUrl: process.env.CGB_CI_BUILD_URL,
+      stageUrl: process.env.CI_STAGE_LINK_URL,
+      stageText: process.env.CI_STAGE_LINK_TEXT,
+      buildNumber: process.env.CI_CI_BUILD_NUMBER,
+      buildUrl: process.env.CI_CI_BUILD_URL,
     }
   )
 );
