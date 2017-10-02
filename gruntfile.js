@@ -31,7 +31,7 @@ module.exports = function (grunt) {
         },
         files: [{
           src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
-          outDir: './dist'
+          outDir: './lib'
         }]
       },
       dist: {
@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         },
         files: [{
           src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts', '!./src/test.ts'],
-          outDir: './dist'
+          outDir: './lib'
         }]
       }
     },

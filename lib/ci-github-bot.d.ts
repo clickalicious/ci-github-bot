@@ -53,7 +53,7 @@ export declare class CiGithubBot {
      * @param {ConfigurationComment} configuration Instance of comment configuration (template,
      *   variables ...)
      */
-    createPullRequestComment(configuration: ConfigurationComment): void;
+    createComment(configuration: ConfigurationComment): void;
     /**
      * Wraps some configuration stuff around request and sends it.
      *

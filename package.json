@@ -14,7 +14,7 @@
   "engines": {
     "node": "^6.1"
   },
-  "main": "./dist/ci-github-bot.js",
+  "main": "./lib/ci-github-bot.js",
   "scripts": {
     "watch": "grunt watch",
     "lint": "grunt lint",

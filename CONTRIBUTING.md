@@ -47,11 +47,11 @@ the **jasmine testing framework**.
 You will probably being never required using the command `npm run build`, because it will create a production-ready 
 build of `ci-github-bot`. This task will also **lint**, **test** and **minify** the
 source. After running this task, you'll find the following files in a generated
-`/dist`folder:
+`/lib`folder:
 
 ````
-dist/ci-github-bot.js
-dist/ci-github-bot.min.js
+lib/ci-github-bot.js
+lib/ci-github-bot.min.js
 ````
 
 ## Developing

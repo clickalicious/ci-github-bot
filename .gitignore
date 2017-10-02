@@ -7,11 +7,12 @@ npm-debug.log
 
 # custom
 _*
-dist/test.js
-dist/test.d.ts
-dist/test.js.map
+lib/test.js
+lib/test.d.ts
+lib/test.js.map
 demo/.env.ci
 demo/.env.circle-ci
+.npmrc
 
 # generic rules
 .git/
