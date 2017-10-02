@@ -90,7 +90,7 @@ export class CiGithubBot {
    * @param {ConfigurationComment} configuration Instance of comment configuration (template,
    *   variables ...)
    */
-  public createPullRequestComment(configuration: ConfigurationComment) {
+  public createComment(configuration: ConfigurationComment) {
 
     if (null === this.getConfiguration().getPullRequestNumber()) {
       throw new Error('Failed creating pull request comment: You need to configure the number of' +

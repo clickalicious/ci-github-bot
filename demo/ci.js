@@ -17,9 +17,9 @@
 // Imports
 const path = require('path');
 const dotenv = require('dotenv');
-const { CiGithubBot } = require('./../dist/ci-github-bot');
-const { ConfigurationComment } = require('./../dist/configuration/comment');
-const { ConfigurationGithub } = require('./../dist/configuration/github');
+const { CiGithubBot } = require('./../lib/ci-github-bot');
+const { ConfigurationComment } = require('./../lib/configuration/comment');
+const { ConfigurationGithub } = require('./../lib/configuration/github');
 
 // Current directory
 const applicationDirectory = path.dirname(require.main.filename);
@@ -42,7 +42,7 @@ configurationGithub.loadFromPullRequestUrl(process.env.CI_GITHUB_PR_URL);
 const ciGithubBot = new CiGithubBot(configurationGithub);
 
 // Publish comment
-ciGithubBot.createPullRequestComment(
+ciGithubBot.createComment(
   new ConfigurationComment(
     process.env.CI_TEMPLATES.split('|'),
     {

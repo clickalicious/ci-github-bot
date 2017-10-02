@@ -17,8 +17,8 @@
 // Imports
 const path = require('path');
 const dotenv = require('dotenv');
-const { CircleCiGithubBot } = require('./../dist/circleci-github-bot');
-const { ConfigurationComment } = require('./../dist/configuration/comment');
+const { CircleCiGithubBot } = require('./../lib/circleci-github-bot');
+const { ConfigurationComment } = require('./../lib/configuration/comment');
 
 // Current directory
 const applicationDirectory = path.dirname(require.main.filename);
@@ -35,7 +35,7 @@ const ciGithubBot = new CircleCiGithubBot(
 );
 
 // Publish comment
-ciGithubBot.createPullRequestComment(
+ciGithubBot.createComment(
   new ConfigurationComment(
     process.env.CI_TEMPLATES.split('|'),
     {

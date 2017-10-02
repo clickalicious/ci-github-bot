@@ -50,7 +50,7 @@ const bot = new CiGithubBot(
 );
 
 // Creates a new PR review comment on existing PR.
-bot.createPullRequestComment(
+bot.createComment(
   new ConfigurationComment(
     process.env.CGB_TEMPLATES.split('|'),
     {
