@@ -245,7 +245,7 @@ export class ConfigurationGithub {
    *
    * @returns {ConfigurationGithub}
    */
-  public setScheme(value: string): this {
+  private setScheme(value: string): this {
     this.scheme = value;
 
     return this;
@@ -267,7 +267,7 @@ export class ConfigurationGithub {
    *
    * @returns {ConfigurationGithub}
    */
-  public setHost(value: string): this {
+  private setHost(value: string): this {
     this.host = value;
 
     return this;

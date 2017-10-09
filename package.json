@@ -20,7 +20,7 @@
     "lint": "grunt lint",
     "build": "grunt build",
     "build-dev": "grunt build-dev",
-    "test": "echo \"No tests specified\" && exit 1"
+    "test": "mocha"
   },
   "keywords": [
     "github",
@@ -38,13 +38,15 @@
     }
   ],
   "dependencies": {
-    "request": "^2.82"
+    "request": "^2.82",
+    "awilix": "^2.8"
   },
   "devDependencies": {
     "@types/node": "^7.0",
     "@types/pug": "^2.0",
     "@types/dotenv": "^4.0",
     "@types/request": "^2.0",
+    "@types/mocha": "^2.2",
     "grunt": "^1.0",
     "grunt-cli": "^1.2",
     "grunt-contrib-copy": "^1.0",
@@ -54,6 +56,8 @@
     "tslint": "^5.7",
     "typescript": "^2.5",
     "tslint-config-airbnb": "^5.3.0",
-    "dotenv": "^4.0"
+    "dotenv": "^4.0",
+    "mocha": "^4.0",
+    "mocha-typescript": "^1.1"
   }
 }

@@ -58,7 +58,7 @@ export class ConfigurationComment {
    *
    * @returns {ConfigurationComment}
    */
-  public setVariables(value: object): this {
+  protected setVariables(value: object): this {
     this.variables = value;
 
     return this;
@@ -80,7 +80,7 @@ export class ConfigurationComment {
    *
    * @returns {ConfigurationComment}
    */
-  public setTemplates(value: string[]): this {
+  protected setTemplates(value: string[]): this {
     this.templates = value;
 
     return this;

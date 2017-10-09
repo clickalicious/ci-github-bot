@@ -25,7 +25,9 @@
 
 ## Features
 
- - Publish comments on a `GitHub` Pull Request by a simple method call
+ - Publish comments on a `GitHub` Pull Request by a simple method call like in this screenshot:
+
+![screenshot of a published GitHub comment](docs/screenshot.png)
 
 ## Abstract
 

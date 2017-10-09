@@ -44,8 +44,8 @@ export class CiGithubBot {
    */
   static readonly TEMPLATE_POWERED_BY: string = '<div>Powered by ci-github-bot ' +
     '<a href="https://github.com/clickalicious/ci-github-bot/" target="_blank"><img' +
-    ' src="https://image.flaticon.com/icons/png/32/34/34429.png"' +
-    ' /></a></div>';
+    ' src="https://raw.githubusercontent.com/clickalicious/ci-github-bot/develop/docs/' +
+    'logo-32x32.png" /></a></div>';
 
   /**
    * HTTP User Agent.

@@ -8,39 +8,46 @@ module.exports = function (grunt) {
         force: false,
         fix: false
       },
-      dev: {
+      test: {
         files: {
           src: [
-            './src/**/*.ts'
+            './src/test/**/*.ts'
           ]
         }
       },
-      dist: {
+      lib: {
         files: {
           src: [
-            './src/**/*.ts', '!./src/test.ts'
+            './src/lib/**/*.ts'
           ]
         }
       }
     },
     ts: {
-      dev: {
+      test: {
         tsconfig: 'tsconfig.json',
         options: {
           rootDir: './src'
         },
         files: [{
-          src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
-          outDir: './lib'
+          src: [
+            '!./src/lib/**/*.ts',
+            './src/test/**/*.ts',
+            '!./src/test/test.ts'
+          ],
+          outDir: './test'
         }]
       },
-      dist: {
+      lib: {
         tsconfig: 'tsconfig.json',
         options: {
-          rootDir: './src'
+          rootDir: './src/lib'
         },
         files: [{
-          src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts', '!./src/test.ts'],
+          src: [
+            '!./src/test/**/*.ts',
+            './src/lib/**/*.ts'
+          ],
           outDir: './lib'
         }]
       }
@@ -56,7 +63,7 @@ module.exports = function (grunt) {
     watch: {
      ts: {
        files: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
-       tasks: ['tslint:dev', 'ts:dev']
+       tasks: ['tslint:test', 'ts:test']
      }
     }
   });
@@ -66,19 +73,23 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-tslint');
   grunt.loadNpmTasks('grunt-ts');
 
+  // Default build everything / full stack
   grunt.registerTask('default', [
-    'tslint:dist', 'ts:dist'
+    'tslint:lib', 'ts:lib', 'tslint:test', 'ts:test'
   ]);
 
-  grunt.registerTask('lint', [
-    'tslint:dist'
-  ]);
-
+  // Build is alias to default including everything
   grunt.registerTask('build', [
-    'tslint:dist', 'ts:dist'
+    'tslint', 'ts'
   ]);
 
-  grunt.registerTask('build-dev', [
-    'tslint:dev', 'ts:dev'
+  // Build just test
+  grunt.registerTask('build:test', [
+    'tslint:test', 'ts:test'
+  ]);
+
+  // Build just iib
+  grunt.registerTask('build:lib', [
+    'tslint:lib', 'ts:lib'
   ]);
 };

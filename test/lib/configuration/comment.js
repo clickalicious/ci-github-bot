@@ -1,3 +1,5 @@
+'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * ci-gitHub-bot
  *
@@ -13,30 +15,26 @@
 /**
  * Configuration of comment.
  */
-export declare class ConfigurationComment {
-    /**
-     * Templates combined rendered for commenting.
-     *
-     * @var {Array<string>}
-     */
-    private templates;
-    /**
-     * @var {object}
-     */
-    private variables;
+class ConfigurationComment {
     /**
      * Constructor.
      *
      * @param {Array<string>} templates Template(s) used for comment
      * @param {object}        variables Key/value pair(s) of template variables
      */
-    constructor(templates: string[], variables: object);
+    constructor(templates, variables) {
+        this
+            .setTemplates(templates)
+            .setVariables(variables);
+    }
     /**
      * Getter for variables.
      *
      * @returns {object<string>}
      */
-    getVariables(): object;
+    getVariables() {
+        return this.variables;
+    }
     /**
      * Setter for variables.
      *
@@ -44,13 +42,18 @@ export declare class ConfigurationComment {
      *
      * @returns {ConfigurationComment}
      */
-    protected setVariables(value: object): this;
+    setVariables(value) {
+        this.variables = value;
+        return this;
+    }
     /**
      * Getter for variables.
      *
      * @returns {Array<string>}
      */
-    getTemplates(): string[];
+    getTemplates() {
+        return this.templates;
+    }
     /**
      * Setter for template.
      *
@@ -58,5 +61,9 @@ export declare class ConfigurationComment {
      *
      * @returns {ConfigurationComment}
      */
-    protected setTemplates(value: string[]): this;
+    setTemplates(value) {
+        this.templates = value;
+        return this;
+    }
 }
+exports.ConfigurationComment = ConfigurationComment;

@@ -30,9 +30,13 @@
     "pretty": true
   },
   "exclude": [
-    "./node_modules",
+    "./.circleci",
+    "./.github",
     "./demo",
+    "./docs",
     "./lib",
-    "./docs"
+    "./src",
+    "./node_modules",
+    "./test"
   ]
 }

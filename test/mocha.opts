@@ -1,0 +1,4 @@
+--recursive
+--ui bdd
+--require test/helper
+-c
