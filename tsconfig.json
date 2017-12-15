@@ -14,6 +14,7 @@
     "noResolve": false,
     "noLib": false,
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "listFiles": true,
     "listEmittedFiles": true,
     "allowUnusedLabels": true,
@@ -26,13 +27,17 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": false,
+    "noUnusedVariable": false,
     "noUnusedParameters": true,
     "pretty": true
   },
   "exclude": [
-    "./node_modules",
+    "./.circleci",
+    "./.github",
     "./demo",
+    "./docs",
     "./lib",
-    "./docs"
+    "./node_modules",
+    "./test"
   ]
 }

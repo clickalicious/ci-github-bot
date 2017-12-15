@@ -1,7 +1,21 @@
 /**
+ * ci-gitHub-bot
+ *
+ * Github communication bot for CI/CD workflows.
+ *
+ * Simplified abstraction on Github's PR/Review-Comment API.
+ * Supports templates for comments based on PUG template engine.
+ *
+ * MIT License
+ *
+ * @copyright 2017 clickalicious, Benjamin Carl
+ */
+import { HelperUrlParserInterface } from '../helper/url-parser/interface';
+import { ConfigurationGithubInterface } from './github-interface';
+/**
  * Configuration of CiGithubBot.
  */
-export declare class ConfigurationGithub {
+export declare class ConfigurationGithub implements ConfigurationGithubInterface {
     /**
      * Username the Bot uses for authentication.
      *
@@ -15,51 +29,32 @@ export declare class ConfigurationGithub {
      */
     private token;
     /**
-     * Organisation/User the PR is created on.
-     *
-     * @var {string}
-     */
-    private organisation;
-    /**
-     * Name of the repository the PR is created on.
-     *
-     * @var {string}
-     */
-    private repository;
-    /**
-     * Number of the pull request.
-     *
-     * @var {number}
-     */
-    private pullRequestNumber;
-    /**
-     * Scheme used for building API URL.
-     *
-     * @var {string}
-     */
-    private scheme;
-    /**
      * API Host.
      *
      * @type {string}
      */
     private host;
-    constructor(username: string, token: string);
     /**
-     * Load configuration.
+     * URL parser for VCS
      *
-     * @param {string} organisation      Organisation (username) of repository the bot communicates to
-     * @param {string} repository        Repository the bot communicates to
-     * @param {number} pullRequestNumber Number of pull request if we target one
-     * @param {string} scheme            Scheme used for communication (http|https)
+     * @type {HelperUrlParserInterface}
      */
-    load(organisation: string, repository: string, pullRequestNumber?: number, scheme?: string): void;
+    private helperUrlParser;
+    constructor(helperUrlParser: HelperUrlParserInterface, username: string, token: string);
     /**
-     * Loads configuration data from a Pull-Request URL (Github).
+     * Getter for helperUrlParser.
      *
-     * @param {string} pullRequestUrl
+     * @returns {HelperUrlParserInterface}
      */
-    loadFromPullRequestUrl(pullRequestUrl: string): void;
+    private getHelperUrlParser();
+    /**
+     * Setter for helperUrlParser.
+     *
+     * @param {HelperUrlParserInterface} value
+     *
+     * @returns {ConfigurationGithub}
+     */
+    setHelperUrlParser(value: HelperUrlParserInterface): this;
     /**
      * Getter for username.
      *
@@ -73,7 +68,7 @@ export declare class ConfigurationGithub {
      *
      * @returns {ConfigurationGithub}
      */
-    private setUsername(value);
+    setUsername(value: string): this;
     /**
      * Getter for token.
      *
@@ -87,7 +82,7 @@ export declare class ConfigurationGithub {
      *
      * @returns {ConfigurationGithub}
      */
-    private setToken(value);
+    setToken(value: string): this;
     /**
      * Getter for organisation.
      *
@@ -95,27 +90,11 @@ export declare class ConfigurationGithub {
      */
     getOrganisation(): string;
     /**
-     * Setter for organisation.
-     *
-     * @param {string} value
-     *
-     * @returns {ConfigurationGithub}
-     */
-    private setOrganisation(value);
-    /**
      * Getter for repository.
      *
      * @returns {string}
      */
     getRepository(): string;
-    /**
-     * Setter for repository.
-     *
-     * @param {string} value
-     *
-     * @returns {ConfigurationGithub}
-     */
-    private setRepository(value);
     /**
      * Getter for pullRequestNumber.
      *
@@ -123,27 +102,11 @@ export declare class ConfigurationGithub {
      */
     getPullRequestNumber(): number;
     /**
-     * Setter for pullRequestNumber.
-     *
-     * @param {number} value
-     *
-     * @returns {ConfigurationGithub}
-     */
-    private setPullRequestNumber(value);
-    /**
      * Getter for scheme.
      *
      * @returns {string}
      */
     getScheme(): string;
-    /**
-     * Setter for scheme.
-     *
-     * @param {string} value
-     *
-     * @returns {ConfigurationGithub}
-     */
-    setScheme(value: string): this;
     /**
      * Getter for host.
      *

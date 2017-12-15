@@ -1,6 +1,20 @@
-import { ConfigurationComment } from './configuration/comment';
-import { ConfigurationGithub } from './configuration/github';
-import { HelperGithubApi } from './helper/github-api';
+/**
+ * ci-github-bot
+ *
+ * Github communication bot for CI/CD workflows.
+ *
+ * Simplified abstraction on Github's PR/Review-Comment API.
+ * Supports templates for comments based on PUG template engine.
+ *
+ * MIT License
+ *
+ * @copyright 2017 clickalicious, Benjamin Carl
+ */
+import { ConfigurationCommentInterface } from './configuration/comment-interface';
+import { ConfigurationGithubInterface } from './configuration/github-interface';
+import { HelperRequestInterface } from './helper/request/interface';
+import { HelperUrlBuilderInterface } from './helper/url-builder/interface';
+import { HelperRendererInterface } from './helper/renderer/interface';
 /**
  * Generic CI-Bot for Github communication wrapping configuration and template processing.
  */
@@ -24,72 +38,100 @@ export declare class CiGithubBot {
      */
     static readonly TEMPLATE_POWERED_BY: string;
     /**
-     * HTTP User Agent.
+     * Configuration.
      *
-     * @type {string}
+     * @var {ConfigurationGithubInterface}
      */
-    static readonly HTTP_USER_AGENT: string;
+    private configurationGithub;
     /**
-     * Configuration of Bot.
+     * Request helper
      *
-     * @var {configurationBot}
+     * @type {HelperRequestInterface}
      */
-    private configuration;
+    private helperRequest;
     /**
      * HelperGithubApi helper.
      *
-     * @var {HelperGithubApi}
+     * @var {HelperUrlBuilderInterface}
      */
-    private helperGithubApi;
+    private helperUrlBuilder;
+    /**
+     * Renderer.
+     *
+     * @var {HelperRendererInterface}
+     */
+    private renderer;
     /**
      * Constructor.
      *
-     * @param {ConfigurationGithub} configuration Instance of bot configuration (credentials ...)
+     * @param {ConfigurationGithubInterface} configurationGithub Instance of bot configuration
+     * @param {HelperRequestInterface}       helperRequest       Helper for requests
+     * @param {HelperUrlBuilderInterface}    helperUrlBuilder    Helper for build GitHub API URLs
+     * @param {HelperRendererInterface}      helperRenderer      Renderer used for rendering comments
      */
-    constructor(configuration: ConfigurationGithub);
+    constructor(configurationGithub: ConfigurationGithubInterface, helperRequest: HelperRequestInterface, helperUrlBuilder: HelperUrlBuilderInterface, helperRenderer: HelperRendererInterface);
     /**
      * Creates a review comment on existing PR at Github.
      *
-     * @param {ConfigurationComment} configuration Instance of comment configuration (template,
-     *   variables ...)
+     * @param {ConfigurationCommentInterface} configurationComment Instance of comment configuration
+     *
+     * @return {Promise} A nodejs native promise
      */
-    createComment(configuration: ConfigurationComment): void;
+    createComment(configurationComment: ConfigurationCommentInterface): any;
     /**
-     * Wraps some configuration stuff around request and sends it.
+     * Getter for renderer.
      *
-     * @param {string} url
-     * @param {object} jsonData
-     * @param {string} httpMethod
-     *
-     * @returns boolean TRUE on success, otherwise FALSE
+     * @return {HelperRendererInterface}
      */
-    private sendRequest(url, jsonData, httpMethod?);
+    getHelperRenderer(): HelperRendererInterface;
+    /**
+     * Setter for renderer.
+     *
+     * @param {HelperRendererInterface} value
+     *
+     * @return {CiGithubBot}
+     */
+    private setHelperRenderer(value);
     /**
      * Getter for helperGithubApi.
      *
-     * @returns {HelperGithubApi}
+     * @return {HelperUrlBuilderInterface}
      */
-    getHelperGithubApi(): HelperGithubApi;
+    getHelperUrlBuilder(): HelperUrlBuilderInterface;
     /**
      * Setter for helperGithubApi.
      *
-     * @param {HelperGithubApi} value
+     * @param {HelperUrlBuilderInterface} value
      *
-     * @returns {CiGithubBot}
+     * @return {CiGithubBot}
      */
-    private setHelperGithubApi(value);
+    private setHelperUrlBuilder(value);
     /**
-     * Getter for configuration.
+     * Getter for configurationGithub.
      *
-     * @returns {ConfigurationGithub}
+     * @return {ConfigurationGithubInterface}
      */
-    getConfiguration(): ConfigurationGithub;
+    getConfiguration(): ConfigurationGithubInterface;
     /**
-     * Setter for configuration.
+     * Setter for configurationGithub.
      *
-     * @param {ConfigurationGithub} value
+     * @param {ConfigurationGithubInterface} value
      *
-     * @returns {CiGithubBot}
+     * @return {CiGithubBot}
      */
     private setConfiguration(value);
+    /**
+     * Getter for helperRequest.
+     *
+     * @return {HelperRequestInterface}
+     */
+    getHelperRequest(): HelperRequestInterface;
+    /**
+     * Setter for helperRequest.
+     *
+     * @param {HelperRequestInterface} value
+     *
+     * @return {CiGithubBot}
+     */
+    private setHelperRequest(value);
 }

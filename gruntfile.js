@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 module.exports = function (grunt) {
   'use strict';
 
@@ -8,40 +9,29 @@ module.exports = function (grunt) {
         force: false,
         fix: false
       },
-      dev: {
+      lib: {
         files: {
           src: [
-            './src/**/*.ts'
-          ]
-        }
-      },
-      dist: {
-        files: {
-          src: [
-            './src/**/*.ts', '!./src/test.ts'
+            './src/lib/**/*.ts',
+            './src/test/**/*.ts'
           ]
         }
       }
     },
     ts: {
-      dev: {
+      lib: {
         tsconfig: 'tsconfig.json',
         options: {
           rootDir: './src'
         },
         files: [{
-          src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
-          outDir: './lib'
-        }]
-      },
-      dist: {
-        tsconfig: 'tsconfig.json',
-        options: {
-          rootDir: './src'
-        },
-        files: [{
-          src: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts', '!./src/test.ts'],
-          outDir: './lib'
+          src: [
+            './src/lib/**/*.ts',
+            './src/test/**/*.ts',
+            '!./src/**/*.d.ts',
+            '!./src/test/test.ts'
+          ],
+          outDir: '.'
         }]
       }
     },
@@ -56,7 +46,7 @@ module.exports = function (grunt) {
     watch: {
      ts: {
        files: ['./src/\*\*/\*.ts', '!./src/**/*.d.ts'],
-       tasks: ['tslint:dev', 'ts:dev']
+       tasks: ['tslint:test', 'ts:test']
      }
     }
   });
@@ -66,19 +56,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-tslint');
   grunt.loadNpmTasks('grunt-ts');
 
+  // Default build everything / full stack
   grunt.registerTask('default', [
-    'tslint:dist', 'ts:dist'
+    'tslint', 'ts'
   ]);
 
-  grunt.registerTask('lint', [
-    'tslint:dist'
-  ]);
-
+  // Build is alias to default including everything
   grunt.registerTask('build', [
-    'tslint:dist', 'ts:dist'
-  ]);
-
-  grunt.registerTask('build-dev', [
-    'tslint:dev', 'ts:dev'
+    'tslint', 'ts'
   ]);
 };

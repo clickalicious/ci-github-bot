@@ -1,20 +1,17 @@
-# node
+# node/npm
 node_modules/
 npm-debug.log
+.npmrc
+.nyc_output/
 
 # ts
 .tscache/
 
 # custom
 _*
-lib/test.js
-lib/test.d.ts
-lib/test.js.map
-demo/.env.ci
-demo/.env.circle-ci
-.npmrc
+demo/.env*
+docs/report/*
+
 
 # generic rules
 .git/
-.alm/
-.env
