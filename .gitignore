@@ -10,7 +10,8 @@ npm-debug.log
 # custom
 _*
 demo/.env*
-docs/coverage/*
+docs/report/*
+
 
 # generic rules
 .git/
