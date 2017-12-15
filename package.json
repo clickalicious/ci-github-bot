@@ -3,7 +3,7 @@
   "description": "GitHub communication bot for CI/CD workflows.",
   "homepage": "https://github.com/clickalicious/ci-github-bot",
   "bugs": {
-    "url" : "https://github.com/clickalicious/ci-github-bot/issues"
+    "url": "https://github.com/clickalicious/ci-github-bot/issues"
   },
   "version": "0.2.0",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "lint": "grunt lint",
     "build": "grunt build",
     "build-dev": "grunt build-dev",
-    "test": "mocha"
+    "test": "nyc mocha",
+    "mutate": "stryker run"
   },
   "keywords": [
     "github",
@@ -37,27 +38,82 @@
       "web": "https://clickalicious.de"
     }
   ],
+  "nyc": {
+    "watermarks": {
+      "lines": [
+        75,
+        75
+      ],
+      "functions": [
+        75,
+        75
+      ],
+      "branches": [
+        75,
+        75
+      ],
+      "statements": [
+        75,
+        75
+      ]
+    },
+    "per-file": true,
+    "lines": 99,
+    "statements": 99,
+    "functions": 99,
+    "branches": 99,
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "html"
+    ],
+    "exclude": [
+      "**/*interface.js",
+      "test/helper.js",
+      "fixtures/**/*",
+      "test/**/*",
+      "demo/**/*",
+      "docs/**/*",
+      "stryker.conf.js"
+    ],
+    "report-dir": "./docs/report/coverage",
+    "all": true,
+    "sourceMap": true,
+    "instrument": true
+  },
   "dependencies": {
-    "request": "^2.82",
-    "awilix": "^2.8"
+    "@types/es6-promise": "0.0.33",
+    "awilix": "^2.8",
+    "request": "^2.82"
   },
   "devDependencies": {
+    "@types/dotenv": "^4.0",
+    "@types/mocha": "^2.2",
+    "@types/nock": "^8.2",
     "@types/node": "^7.0",
     "@types/pug": "^2.0",
-    "@types/dotenv": "^4.0",
     "@types/request": "^2.0",
-    "@types/mocha": "^2.2",
+    "@types/sinon": "^2.3",
+    "dotenv": "^4.0",
     "grunt": "^1.0",
     "grunt-cli": "^1.2",
     "grunt-contrib-copy": "^1.0",
     "grunt-contrib-watch": "^1.0",
     "grunt-ts": "^6.0.0-beta.16",
     "grunt-tslint": "^5.0",
-    "tslint": "^5.7",
-    "typescript": "^2.5",
-    "tslint-config-airbnb": "^5.3.0",
-    "dotenv": "^4.0",
     "mocha": "^4.0",
-    "mocha-typescript": "^1.1"
+    "mocha-typescript": "^1.1",
+    "nock": "^9.0",
+    "nyc": "^11.2",
+    "stryker": "^0.15.5",
+    "stryker-api": "^0.11.0",
+    "stryker-html-reporter": "^0.11.3",
+    "stryker-javascript-mutator": "^0.2.3",
+    "stryker-mocha-framework": "^0.7.1",
+    "stryker-mocha-runner": "^0.10.1",
+    "ts-mockito": "^2.2",
+    "tslint": "^5.7",
+    "tslint-config-airbnb": "^5.3",
+    "typescript": "^2.5"
   }
 }

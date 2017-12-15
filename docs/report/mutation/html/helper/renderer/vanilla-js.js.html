@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html><head><title>renderer\vanilla-js.js
+ - Stryker report</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="../../strykerResources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../strykerResources/highlightjs/styles/default.css">
+<link rel="stylesheet" href="../../strykerResources/stryker.css"></head>
+<body><img class="stryker-image" alt="Stryker" src="../../strykerResources/stryker-80x80.png">
+<div class="container-fluid"><div class="row"><div class="col-lg-12"><h1 class="display-4">renderer\vanilla-js.js
+ 
+<small class="text-muted">- Stryker report</small></h1></div></div>
+<ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../index.html">All files</a></li><li class="breadcrumb-item"><a href="../index.html">helper</a></li>
+<li class="breadcrumb-item active">renderer\vanilla-js.js</li></ol>
+<div class="row"><div class="col-lg-12"><div class="row"><div class="col-sm-11"><table class="table table-sm table-hover table-bordered table-no-top"><thead><tr><th style="width: 20%"><div><span>File / Directory</span></div></th>
+<th colspan="2"><div><span>Mutation score</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># Killed</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># Survived</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># Timeout</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># No coverage</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># Runtime errors</span></div></th>
+<th class="rotate text-center" style="width: 50px"><div><span># Transpile errors</span></div></th>
+<th class="rotate rotate-width-70 text-center" style="width: 70px"><div><span>Total detected</span></div></th>
+<th class="rotate rotate-width-70 text-center" style="width: 70px"><div><span>Total undetected</span></div></th>
+<th class="rotate rotate-width-70 text-center" style="width: 70px"><div><span>Total mutants</span></div></th></tr></thead>
+<tbody><tr><td>renderer\vanilla-js.js</td>
+<td><div class="progress"><div class="progress-bar bg-warning" role="progressbar" aria-valuenow="72.73" aria-valuemin="0" aria-valuemax="100" style="width: 72.73%;">72.73
+%</div></div></td>
+<th class="text-center text-warning" style="width: 10%">72.73</th>
+<td class="text-center">8</td>
+<td class="text-center">3</td>
+<td class="text-center">0</td>
+<td class="text-center">0</td>
+<td class="text-center">0</td>
+<td class="text-center">0</td>
+<th class="text-center">8</th>
+<th class="text-center">3</th>
+<th class="text-center">11</th></tr>
+</tbody></table></div></div>
+<div class="row"><div class="col-lg-7"><div class="row legend"><form class="col-md-12" novalidate="novalidate">
+<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input stryker-display" checked value="2" type="checkbox">
+Survived
+ 
+(3)</label></div>
+<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input stryker-display" value="1" type="checkbox">
+Killed
+ 
+(8)</label></div>
+
+
+
+<a href="#" class="stryker-collapse-expand-all">Expand all</a></form></div>
+<pre><code class="lang-javascript"><span class="bg-null">&#039;use strict&#039;;
+Object.defineProperty(exports, &quot;__esModule&quot;, { value: </span><a href="#" class="stryker-mutant-button" tabindex="0" title="BooleanSubstitution" data-content="status: Survived" data-mutant-status-annotation="danger" data-mutant-status="2" data-mutant="0"><span class="badge badge-danger">0</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="0">false</span><span class="stryker-original-code" data-mutant="0"><span class="bg-danger-light">true</span></span><span class="bg-null"> });
+/**
+ * Renderer based on plain vanilla JavaScript.
+ */
+class HelperRendererVanillaJs {
+    /**
+     * Renders a template by plain js replacement.
+     *
+     * @param {ConfigurationComment} configurationComment Configuration of comment to be rendered
+     *
+     * @returns {string} Rendered buffer
+     */
+    render(configurationComment) </span><a href="#" class="stryker-mutant-button" tabindex="0" title="Block" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="1"><span class="badge badge-success">1</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="1">{}</span><span class="stryker-original-code" data-mutant="1"><span class="bg-success-light">{
+        let buffer = &#039;&#039;;
+        const variables = Object.assign(configurationComment.getVariables(), process.env);
+        const templates = configurationComment.getTemplates();
+        for (const template in templates) </span><a href="#" class="stryker-mutant-button" tabindex="0" title="Block" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="2"><span class="badge badge-success">2</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="2">{}</span><span class="stryker-original-code" data-mutant="2"><span class="bg-success-light">{
+            let currentBuffer = templates[template];
+            const placeholders = this.resolvePlaceholder(currentBuffer);
+            for (const placeholder in placeholders) </span><a href="#" class="stryker-mutant-button" tabindex="0" title="Block" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="3"><span class="badge badge-success">3</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="3">{}</span><span class="stryker-original-code" data-mutant="3"><span class="bg-success-light">{
+                const plainPlaceholder = placeholders[placeholder]
+                    .replace(&#039;${&#039;, &#039;&#039;)
+                    .replace(&#039;}&#039;, &#039;&#039;);
+                const replacement = variables[plainPlaceholder];
+                if (</span><a href="#" class="stryker-mutant-button" tabindex="0" title="IfStatement" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="4"><span class="badge badge-success">4</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="4">false</span><a href="#" class="stryker-mutant-button" tabindex="0" title="IfStatement" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="5"><span class="badge badge-success">5</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="5">true</span><a href="#" class="stryker-mutant-button" tabindex="0" title="BinaryExpression" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="6"><span class="badge badge-success">6</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="6">typeof replacement !== &#039;undefined&#039;</span><span class="stryker-original-code" data-mutant="4"><span class="stryker-original-code" data-mutant="5"><span class="stryker-original-code" data-mutant="6"><span class="bg-success-light">typeof replacement === &#039;undefined&#039;</span></span></span></span><span class="bg-success-light">) </span><a href="#" class="stryker-mutant-button" tabindex="0" title="Block" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="7"><span class="badge badge-success">7</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="7">{}</span><span class="stryker-original-code" data-mutant="7"><span class="bg-success-light">{
+                    throw new Error(</span><a href="#" class="stryker-mutant-button" tabindex="0" title="BinaryExpression" data-content="status: Survived" data-mutant-status-annotation="danger" data-mutant-status="2" data-mutant="8"><span class="badge badge-danger">8</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="8">&#039;Variable &quot;&#039; + plainPlaceholder - &#039;&quot; is undefined. Template could not be rendered!&#039;</span><a href="#" class="stryker-mutant-button" tabindex="0" title="BinaryExpression" data-content="status: Survived" data-mutant-status-annotation="danger" data-mutant-status="2" data-mutant="9"><span class="badge badge-danger">9</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="9">&#039;Variable &quot;&#039; - plainPlaceholder</span><span class="stryker-original-code" data-mutant="8"><span class="stryker-original-code" data-mutant="9"><span class="bg-danger-light">&#039;Variable &quot;&#039; + plainPlaceholder</span></span><span class="bg-danger-light"> + &#039;&quot; is undefined. Template could not be rendered!&#039;</span></span><span class="bg-success-light">);
+                }</span></span><span class="bg-success-light">
+                currentBuffer = currentBuffer.replace(placeholders[placeholder], replacement);
+            }</span></span><span class="bg-success-light">
+            buffer += currentBuffer;
+        }</span></span><span class="bg-success-light">
+        return buffer;
+    }</span></span><span class="bg-null">
+    /**
+     * Resolves placeholder from passed in buffer.
+     *
+     * @param {string} buffer
+     *
+     * @returns {RegExpMatchArray} Resolved placeholders
+     */
+    resolvePlaceholder(buffer) </span><a href="#" class="stryker-mutant-button" tabindex="0" title="Block" data-content="status: Killed" data-mutant-status-annotation="success" data-mutant-status="1" data-mutant="10"><span class="badge badge-success">10</span></a><span class="badge badge-info stryker-mutant-replacement" hidden="hidden" data-mutant="10">{}</span><span class="stryker-original-code" data-mutant="10"><span class="bg-success-light">{
+        return buffer.match(new RegExp(/\${([\w\d]+)}/g));
+    }</span></span><span class="bg-null">
+}
+exports.HelperRendererVanillaJs = HelperRendererVanillaJs;</span>
+</code></pre></div>
+<div class="col-lg-5"><table class="table table-sm table-hover mutant-table"><thead><tr><th>#</th>
+<th>Mutator</th>
+<th>State</th>
+<th>Location</th>
+<th>Original</th>
+<th>Replacement</th></tr></thead>
+<tbody><tr><th>0</th>
+<td>BooleanSubstitution</td>
+<td>Survived</td>
+<td>1
+:
+54</td>
+<td><code></code></td>
+<td><code></code></td></tr>
+<tr><th>1</th>
+<td>Block</td>
+<td>Killed</td>
+<td>13
+:
+33</td>
+<td><code>{
+   ...    }</code></td>
+<td><code>{}</code></td></tr>
+<tr><th>2</th>
+<td>Block</td>
+<td>Killed</td>
+<td>17
+:
+42</td>
+<td><code>{
+   ...    }</code></td>
+<td><code>{}</code></td></tr>
+<tr><th>3</th>
+<td>Block</td>
+<td>Killed</td>
+<td>20
+:
+52</td>
+<td><code>{
+   ...    }</code></td>
+<td><code>{}</code></td></tr>
+<tr><th>4</th>
+<td>IfStatement</td>
+<td>Killed</td>
+<td>25
+:
+20</td>
+<td><code>=== '         '</code></td>
+<td><code></code></td></tr>
+<tr><th>5</th>
+<td>IfStatement</td>
+<td>Killed</td>
+<td>25
+:
+20</td>
+<td><code>=== '         '</code></td>
+<td><code></code></td></tr>
+<tr><th>6</th>
+<td>BinaryExpression</td>
+<td>Killed</td>
+<td>25
+:
+20</td>
+<td><code>=== '         '</code></td>
+<td><code>!== '         '</code></td></tr>
+<tr><th>7</th>
+<td>Block</td>
+<td>Killed</td>
+<td>25
+:
+56</td>
+<td><code>{
+   ...    }</code></td>
+<td><code>{}</code></td></tr>
+<tr><th>8</th>
+<td>BinaryExpression</td>
+<td>Survived</td>
+<td>26
+:
+36</td>
+<td><code>'    ...   !'</code></td>
+<td><code>'    ...   !'</code></td></tr>
+<tr><th>9</th>
+<td>BinaryExpression</td>
+<td>Survived</td>
+<td>26
+:
+36</td>
+<td><code>'         "' +</code></td>
+<td><code>'         "' -</code></td></tr>
+<tr><th>10</th>
+<td>Block</td>
+<td>Killed</td>
+<td>41
+:
+31</td>
+<td><code>{
+   ...    }</code></td>
+<td><code>{}</code></td></tr></tbody></table></div></div></div></div>
+<footer>Generated with stryker-html-reporter generator. Visit the 
+<a href="http://stryker-mutator.github.io" target="_blank">Stryker website</a></footer></div>
+<script src="../../strykerResources/popper.js/dist/umd/popper.min.js" defer="defer"></script>
+<script src="../../strykerResources/jquery/dist/jquery.slim.min.js" defer="defer"></script>
+<script src="../../strykerResources/bootstrap/js/bootstrap.min.js" defer="defer"></script>
+<script src="../../strykerResources/stryker.js" defer="defer"></script></body></html>

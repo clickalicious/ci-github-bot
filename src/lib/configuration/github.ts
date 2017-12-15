@@ -13,13 +13,14 @@
  * @copyright 2017 clickalicious, Benjamin Carl
  */
 
-import { ParserUrlGithub } from '../parser/url/github';
+import { HelperUrlParserInterface } from '../helper/url-parser/interface';
+import { ConfigurationGithubInterface } from './github-interface';
 
 /**
  * Configuration of CiGithubBot.
  */
-export class ConfigurationGithub {
-
+export class ConfigurationGithub implements ConfigurationGithubInterface
+{
   /**
    * Username the Bot uses for authentication.
    *
@@ -35,88 +36,52 @@ export class ConfigurationGithub {
   private token: string;
 
   /**
-   * Organisation/User the PR is created on.
-   *
-   * @var {string}
-   */
-  private organisation: string;
-
-  /**
-   * Name of the repository the PR is created on.
-   *
-   * @var {string}
-   */
-  private repository: string;
-
-  /**
-   * Number of the pull request.
-   *
-   * @var {number}
-   */
-  private pullRequestNumber: number;
-
-  /**
-   * Scheme used for building API URL.
-   *
-   * @var {string}
-   */
-  private scheme: string;
-
-  /**
    * API Host.
    *
    * @type {string}
    */
   private host: string = 'api.github.com';
 
+  /**
+   * URL parser for VCS
+   *
+   * @type {HelperUrlParserInterface}
+   */
+  private helperUrlParser: HelperUrlParserInterface;
+
   /* Constructor.
    *
-   * @param {string} username Bot username - used for bot posts/edits ...
-   * @param {string} token    Bot token - for authentication
+   * @param {HelperUrlParserInterface} helperUrlParser URL Parser for GitHub URLs
+   * @param {string}                   username        Bot username - used for bot posts/edits
+   * @param {string}                   token           Bot token - for authentication
    */
-  constructor(username: string, token: string) {
+  constructor(helperUrlParser: HelperUrlParserInterface, username: string, token: string) {
     this
+      .setHelperUrlParser(helperUrlParser)
       .setUsername(username)
       .setToken(token);
   }
 
   /**
-   * Load configuration.
+   * Getter for helperUrlParser.
    *
-   * @param {string} organisation      Organisation (username) of repository the bot communicates to
-   * @param {string} repository        Repository the bot communicates to
-   * @param {number} pullRequestNumber Number of pull request if we target one
-   * @param {string} scheme            Scheme used for communication (http|https)
+   * @returns {HelperUrlParserInterface}
    */
-  public load(
-    organisation: string,
-    repository: string,
-    pullRequestNumber: number = null,
-    scheme: string = 'https',
-  ) {
-    this
-      .setOrganisation(organisation)
-      .setRepository(repository)
-      .setPullRequestNumber(pullRequestNumber)
-      .setScheme(scheme);
+  private getHelperUrlParser(): HelperUrlParserInterface {
+    return this.helperUrlParser;
   }
 
   /**
-   * Loads configuration data from a Pull-Request URL (Github).
+   * Setter for helperUrlParser.
    *
-   * @param {string} pullRequestUrl
+   * @param {HelperUrlParserInterface} value
+   *
+   * @returns {ConfigurationGithub}
    */
-  public loadFromPullRequestUrl(pullRequestUrl: string) {
+  public setHelperUrlParser(value: HelperUrlParserInterface): this {
+    this.helperUrlParser = value;
 
-    // Extract information from Pull Request URL
-    const urlParser = new ParserUrlGithub(pullRequestUrl);
-
-    this.load(
-      urlParser.getOrganisation(),
-      urlParser.getRepository(),
-      urlParser.getPullRequestNumber(),
-      urlParser.getScheme(),
-    );
+    return this;
   }
 
   /**
@@ -135,7 +100,7 @@ export class ConfigurationGithub {
    *
    * @returns {ConfigurationGithub}
    */
-  private setUsername(value: string): this {
+  public setUsername(value: string): this {
     this.username = value;
 
     return this;
@@ -157,7 +122,7 @@ export class ConfigurationGithub {
    *
    * @returns {ConfigurationGithub}
    */
-  private setToken(value: string): this {
+  public setToken(value: string): this {
     this.token = value;
 
     return this;
@@ -169,20 +134,8 @@ export class ConfigurationGithub {
    * @returns {string}
    */
   public getOrganisation(): string {
-    return this.organisation;
-  }
-
-  /**
-   * Setter for organisation.
-   *
-   * @param {string} value
-   *
-   * @returns {ConfigurationGithub}
-   */
-  private setOrganisation(value: string): this {
-    this.organisation = value;
-
-    return this;
+    // return this.organisation;
+    return this.getHelperUrlParser().getOrganisation();
   }
 
   /**
@@ -191,20 +144,8 @@ export class ConfigurationGithub {
    * @returns {string}
    */
   public getRepository(): string {
-    return this.repository;
-  }
-
-  /**
-   * Setter for repository.
-   *
-   * @param {string} value
-   *
-   * @returns {ConfigurationGithub}
-   */
-  private setRepository(value: string): this {
-    this.repository = value;
-
-    return this;
+    // return this.repository;
+    return this.getHelperUrlParser().getRepository();
   }
 
   /**
@@ -213,20 +154,8 @@ export class ConfigurationGithub {
    * @returns {number}
    */
   public getPullRequestNumber(): number {
-    return this.pullRequestNumber;
-  }
-
-  /**
-   * Setter for pullRequestNumber.
-   *
-   * @param {number} value
-   *
-   * @returns {ConfigurationGithub}
-   */
-  private setPullRequestNumber(value: number): this {
-    this.pullRequestNumber = value;
-
-    return this;
+    // return this.pullRequestNumber;
+    return this.getHelperUrlParser().getPullRequestNumber();
   }
 
   /**
@@ -235,20 +164,7 @@ export class ConfigurationGithub {
    * @returns {string}
    */
   public getScheme(): string {
-    return this.scheme;
-  }
-
-  /**
-   * Setter for scheme.
-   *
-   * @param {string} value
-   *
-   * @returns {ConfigurationGithub}
-   */
-  private setScheme(value: string): this {
-    this.scheme = value;
-
-    return this;
+    return this.getHelperUrlParser().getScheme();
   }
 
   /**
@@ -267,7 +183,7 @@ export class ConfigurationGithub {
    *
    * @returns {ConfigurationGithub}
    */
-  private setHost(value: string): this {
+  public setHost(value: string): this {
     this.host = value;
 
     return this;

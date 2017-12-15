@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for ci-github-bot/lib/di-configuration.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="..\..\prettify.css" />
+    <link rel="stylesheet" href="..\..\base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(..\..\sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="..\..\index.html">All files</a> / <a href="index.html">ci-github-bot/lib</a> di-configuration.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>16/16</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>16/16</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * ci-github-bot
+ *
+ * Github communication bot for CI/CD workflows.
+ *
+ * Simplified abstraction on Github's PR/Review-Comment API.
+ * Supports templates for comments based on PUG template engine.
+ *
+ * MIT License
+ *
+ * @copyright 2017 clickalicious, Benjamin Carl
+ */
+/* istanbul ignore next */
+const awilix_1 = require("awilix");
+/* istanbul ignore next */
+const github_1 = require("./configuration/github");
+/* istanbul ignore next */
+const github_2 = require("./helper/url-parser/github");
+const ci_github_bot_1 = require("./ci-github-bot");
+const vanilla_js_1 = require("./helper/request/vanilla-js");
+const github_api_1 = require("./helper/url-builder/github-api");
+const vanilla_js_2 = require("./helper/renderer/vanilla-js");
+const comment_1 = require("./configuration/comment");
+/**
+ * DI Configuration for Bot
+ */
+class DiConfiguration {
+    /**
+     * Constructor.
+     *
+     * @param {string} githubUsername Username used for accessing GitHub API for PR comment
+     * @param {string} githubToken    Token used for accessing GitHub API for PR comment
+     * @param {string} pullRequestUrl Pull request URL being parsed
+     * @param {string} ciPlatform     Platform used -
+     */
+    constructor(githubUsername, githubToken, pullRequestUrl, ciPlatform = DiConfiguration.CI_PLATFORM_GENERIC) {
+        // Create the container and set the resolutionMode to CLASSIC.
+        this.container = awilix_1.createContainer({
+            resolutionMode: awilix_1.ResolutionMode.CLASSIC,
+        });
+        let url = pullRequestUrl;
+        switch (ciPlatform) {
+            case DiConfiguration.CI_PLATFORM_CIRCLECI:
+                url = process.env.PR_URL;
+                break;
+        }
+        // Register configuration (parameter/arguments and classes) ...
+        this.container.register({
+            pullRequestUrl: awilix_1.asValue(url),
+            helperUrlParser: awilix_1.asClass(github_2.HelperUrlParserGithub),
+            username: awilix_1.asValue(githubUsername),
+            token: awilix_1.asValue(githubToken),
+            configurationGithub: awilix_1.asClass(github_1.ConfigurationGithub),
+            helperRequest: awilix_1.asClass(vanilla_js_1.HelperRequestVanillaJs),
+            helperUrlBuilder: awilix_1.asClass(github_api_1.HelperUrlBuilderGithubApi),
+            helperRenderer: awilix_1.asClass(vanilla_js_2.HelperRendererVanillaJs),
+            CiGithubBot: awilix_1.asClass(ci_github_bot_1.CiGithubBot),
+            ConfigurationComment: awilix_1.asClass(comment_1.ConfigurationComment),
+        });
+    }
+    /**
+     * Getter for DIC.
+     *
+     * @return {AwilixContainer} Preconfigured and ready to use DIC.
+     */
+    getContainer() {
+        return this.container;
+    }
+}
+/**
+ * Type generic CI platform.
+ *
+ * @type {string}
+ */
+DiConfiguration.CI_PLATFORM_GENERIC = 'Ci';
+/**
+ * Type generic CircleCI platform.
+ *
+ * @type {string}bilde
+ */
+DiConfiguration.CI_PLATFORM_CIRCLECI = 'CircleCi';
+exports.DiConfiguration = DiConfiguration;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Dec 11 2017 11:19:13 GMT+0100 (Mitteleuropäische Zeit)
+</div>
+</div>
+<script src="..\..\prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="..\..\sorter.js"></script>
+</body>
+</html>

@@ -1,7 +1,6 @@
 'use strict';
 
 /**
- /**
  * ci-gitHub-bot
  *
  * Github communication bot for CI/CD workflows.
@@ -17,38 +16,54 @@
 // Imports
 const path = require('path');
 const dotenv = require('dotenv');
-const { CiGithubBot } = require('./../lib/ci-github-bot');
-const { ConfigurationComment } = require('./../lib/configuration/comment');
-const { ConfigurationGithub } = require('./../lib/configuration/github');
+const { DiConfiguration } = require('./../lib/di-configuration');
 
 // Current directory
 const applicationDirectory = path.dirname(require.main.filename);
 
+// Default is generic DEMO
+let filename = applicationDirectory + '/.env.ci';
+
+// Check for CircleCI DEMO
+if (process.env.CIRCLECI && 'true' === process.env.CIRCLECI) {
+  filename = applicationDirectory + '/.env.circle-ci';
+}
+
 // Simulate CI Env
 dotenv.config({
-  path: applicationDirectory + '/.env.ci',
+  path: filename,
 });
 
-// Create a Github configuration
-const configurationGithub = new ConfigurationGithub(
+// Create instance of our DI container collection
+const diConfiguration = new DiConfiguration(
   process.env.CI_GITHUB_BOT_USERNAME,
-  process.env.CI_GITHUB_BOT_TOKEN
+  process.env.CI_GITHUB_BOT_TOKEN,
+  process.env.CI_GITHUB_PR_URL
 );
 
-// Load configuration from PR URL
-configurationGithub.loadFromPullRequestUrl(process.env.CI_GITHUB_PR_URL);
+// Receive ci-github-bot from DIC
+const ciGithubBot = diConfiguration.getContainer().resolve('CiGithubBot');
+const configurationComment = diConfiguration.getContainer().resolve('ConfigurationComment');
 
-// Create a bot instance
-const ciGithubBot = new CiGithubBot(configurationGithub);
+// Configure comment object with data
+configurationComment.setData(
+  process.env.CI_TEMPLATES.split('|'),
+  {
+    stageUrl: process.env.CI_STAGE_LINK_URL,
+    stageText: process.env.CI_STAGE_LINK_TEXT
+  }
+);
 
 // Publish comment
-ciGithubBot.createComment(
-  new ConfigurationComment(
-    process.env.CI_TEMPLATES.split('|'),
-    {
-      stageUrl: process.env.CI_STAGE_LINK_URL,
-      stageText: process.env.CI_STAGE_LINK_TEXT
+ciGithubBot
+  .createComment(configurationComment)
+  .then(
+    () => {
+      console.log('Comment created successful.');
+      process.exit(0);
+    },
+    (error) => {
+      console.log(error);
+      process.exit(1);
     }
-  )
-);
-
+  );

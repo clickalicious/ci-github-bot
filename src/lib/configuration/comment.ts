@@ -13,11 +13,13 @@
  * @copyright 2017 clickalicious, Benjamin Carl
  */
 
+import { ConfigurationCommentInterface } from './comment-interface';
+
 /**
  * Configuration of comment.
  */
-export class ConfigurationComment {
-
+export class ConfigurationComment implements ConfigurationCommentInterface
+{
   /**
    * Templates combined rendered for commenting.
    *
@@ -31,21 +33,25 @@ export class ConfigurationComment {
   private variables: object;
 
   /**
-   * Constructor.
+   * Setter for data/configuration of comment.
    *
    * @param {Array<string>} templates Template(s) used for comment
    * @param {object}        variables Key/value pair(s) of template variables
+   *
+   * @return {ConfigurationComment}
    */
-  constructor(templates: string[], variables: object) {
+  public setData(templates: string[], variables: object): this {
     this
       .setTemplates(templates)
       .setVariables(variables);
+
+    return this;
   }
 
   /**
    * Getter for variables.
    *
-   * @returns {object<string>}
+   * @return {object<string>}
    */
   public getVariables(): object {
     return this.variables;
@@ -58,7 +64,7 @@ export class ConfigurationComment {
    *
    * @returns {ConfigurationComment}
    */
-  protected setVariables(value: object): this {
+  public setVariables(value: object): this {
     this.variables = value;
 
     return this;
@@ -67,7 +73,7 @@ export class ConfigurationComment {
   /**
    * Getter for variables.
    *
-   * @returns {Array<string>}
+   * @return {Array<string>}
    */
   public getTemplates(): string[] {
     return this.templates;
@@ -78,9 +84,9 @@ export class ConfigurationComment {
    *
    * @param {Array<string>} value
    *
-   * @returns {ConfigurationComment}
+   * @return {ConfigurationComment}
    */
-  protected setTemplates(value: string[]): this {
+  public setTemplates(value: string[]): this {
     this.templates = value;
 
     return this;

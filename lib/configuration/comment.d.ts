@@ -10,10 +10,11 @@
  *
  * @copyright 2017 clickalicious, Benjamin Carl
  */
+import { ConfigurationCommentInterface } from './comment-interface';
 /**
  * Configuration of comment.
  */
-export declare class ConfigurationComment {
+export declare class ConfigurationComment implements ConfigurationCommentInterface {
     /**
      * Templates combined rendered for commenting.
      *
@@ -25,16 +26,18 @@ export declare class ConfigurationComment {
      */
     private variables;
     /**
-     * Constructor.
+     * Setter for data/configuration of comment.
      *
      * @param {Array<string>} templates Template(s) used for comment
      * @param {object}        variables Key/value pair(s) of template variables
+     *
+     * @return {ConfigurationComment}
      */
-    constructor(templates: string[], variables: object);
+    setData(templates: string[], variables: object): this;
     /**
      * Getter for variables.
      *
-     * @returns {object<string>}
+     * @return {object<string>}
      */
     getVariables(): object;
     /**
@@ -44,11 +47,11 @@ export declare class ConfigurationComment {
      *
      * @returns {ConfigurationComment}
      */
-    protected setVariables(value: object): this;
+    setVariables(value: object): this;
     /**
      * Getter for variables.
      *
-     * @returns {Array<string>}
+     * @return {Array<string>}
      */
     getTemplates(): string[];
     /**
@@ -56,7 +59,7 @@ export declare class ConfigurationComment {
      *
      * @param {Array<string>} value
      *
-     * @returns {ConfigurationComment}
+     * @return {ConfigurationComment}
      */
-    protected setTemplates(value: string[]): this;
+    setTemplates(value: string[]): this;
 }

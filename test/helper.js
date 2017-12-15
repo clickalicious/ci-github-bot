@@ -1,2 +1,2 @@
-var ConfigurationComment = require('./../lib/configuration/comment');
-global.ConfigurationComment = ConfigurationComment;
+// var ConfigurationComment = require('./../lib/configuration/comment');
+// global.ConfigurationComment = ConfigurationComment;
