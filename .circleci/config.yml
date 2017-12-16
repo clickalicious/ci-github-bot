@@ -27,7 +27,7 @@ jobs:
           root: /home
           # Must be relative path from root
           paths:
-            - home/circleci/project/
+            - circleci/project/
 
   test:
     <<: *defaults
