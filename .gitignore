@@ -3,6 +3,7 @@ node_modules/
 npm-debug.log
 .npmrc
 .nyc_output/
+package-lock.json
 
 # ts
 .tscache/
@@ -11,7 +12,6 @@ npm-debug.log
 _*
 demo/.env*
 docs/report/*
-
 
 # generic rules
 .git/
