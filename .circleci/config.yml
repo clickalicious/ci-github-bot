@@ -49,6 +49,10 @@ jobs:
           name: Mutation-Test
           command: node_modules/.bin/stryker run
 
+      - run:
+          name: Report to Codacy
+          command: node_modules/.bin/nyc report --reporter=lcov && cat ./docs/report/coverage/lcov.info | ./node_modules/.bin/codacy-coverage
+
 workflows:
   version: 2
   build-test:
