@@ -22,9 +22,20 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory
+          root: /home
+          # Must be relative path from root
+          paths:
+            - circleci/project/
+
   test:
     <<: *defaults
     steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /home
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
